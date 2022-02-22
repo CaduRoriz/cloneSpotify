@@ -1,0 +1,302 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*(deve estar nas anotacoes de css) o box-sizing: border-box faz com que os elementos tenham o tamanho somado com o padding e margin ex: se eu dei um padding de 10 px para um elemento de 250 px, ele vai ter na verdade 230 px*/
+    font-family: "Roboto";
+}
+
+html,body {
+    height: 100%;
+}
+
+.sidebar{
+    max-height: calc(100vh - 100px);
+    float: left;
+    width: 250px;
+    padding: 30px 10px 0px 20px;
+    height: 100%;
+    overflow-y: hidden; /*essa propriedade faz com que se exceder o tamanho da tela vertical(y de eixo y) se crie um scroll no eelemtno(sidebar) e nao na page*/
+    overflow-x: hidden; /*escondendo o overflow horizontal para nao ter o scrol*/
+    background-color: black;
+}
+
+.sidebar-wraper{
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+     /* esse padding foi dentro do containr da sidebar eu desse um padding botom pra dar espaco para o player da musica
+                            e por isso tem essa div sidebar-wraper dentro da sidebar, apenas para dar o padding interno, caso contrario o padding seria em relacaoa a pagina inteira*/
+}
+
+.sidebar__menu{
+    margin: 20px 0 20px 0;
+    color: rgb(190,190,190);
+}
+
+.sidebar__menu a:hover{
+    color: white;
+}
+
+.sidebar__logo{
+   display: flex;
+   justify-content: center;
+}
+
+.sidebar__logo img{ /* apesar de na classe .sidebar eu ja delimitar um tamanho de 250px para o widht, aqui nessa classe eu coloco um max-widht pra ele de 250 e um widht de 100% */
+    max-width: 180px; /*isso para que eu meio que tenha uma dupla verificacao, e a logo tera o tamanho maximo do sidebar mesmo que ele nao tenha os 250px, e a delimitação é para que o tamanho nao estoure o sidebar*/
+    width: 100%;
+
+}
+
+.sidebar__menu a{
+    color: rgb(190,190,190);
+    display: block;
+    padding: 10px 0;
+    text-decoration: none;
+}
+
+.sidebar__menu svg{ /* apesar de os icones estarem no <i></i> nesse momento o fontawesome eh gerado fica no elemento svg e nao no i*/
+    margin: 0 20px 0 0;
+    height: 25px;
+    width: 25px;
+}
+
+.sidebar__menu a.sidebar__menu__selecionado{ /*poderia ter utilizado apenas o seletor .sidebar__menu__slecionado mas resolvi deixar assim para reforçar na mente niveis de hierarquia*/
+    color:white;
+    background-color: rgb(80,80,80);
+    border-radius: 5px;
+}
+
+.sidebar__menu__item{
+    margin-top: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar__menu__item:hover{
+    color: white;
+}
+
+.sidebar__menu__item:hover .sidebar__menu__item__componente{
+    background-color: white;
+}
+
+.sidebar__menu__item:hover svg{
+    color: white;
+}
+
+
+.sidebar__menu__item__componente{
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    display: inline-block;
+    color:black;
+    background-color: rgb(190,190,190);;
+    font-size: 1.5rem;
+}
+
+.sidebar__menu__item svg{ /*nao utilizei a imagem da live, dai peguei icone do fontsawesome*/
+    margin: 0;
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    display: inline-block;
+    color: rgb(190,190,190);;
+}
+
+.sidebar__menu__item span{
+    font-size: 16px;
+    padding: 0 20px;
+}
+
+.sidebar__playlists{
+    flex: 1;
+    padding: 10px 0;
+    border-top: 1px solid rgb(40,40,40);
+    overflow-y: auto;
+}
+
+.sidebar__playlists a{
+    margin: 10px 0;
+    display: block;
+    color: rgb(190,190,190);
+    text-decoration: none;
+}
+
+.sidebar__playlists a:hover{
+    color: white;
+}
+
+.msg {
+    margin: 5px 0;
+    height: 30px;
+    display: flex;
+    color: rgb(190,190,190);
+    cursor: pointer;
+
+}
+
+.msg:hover{
+    color: white;
+}
+
+.msg p{
+    padding: 0 20px;
+}
+
+
+
+/* Parte principal do app */
+
+.main {
+    width: calc(100% - 250px);
+    background-color: rgb(30,30,30);
+    height: 100%;
+    float: left;
+    padding: 15px 50px;
+    overflow-y: auto;
+}
+
+.main__row{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.main-wraper{
+    padding-bottom: 200px;
+}
+
+.main__row__title{
+    width: 100%;
+}
+
+.main__row__title h2{
+    color:white;
+}
+
+.main__col img{
+    width: 180px;
+    height: 180px;
+    margin: auto; 
+    
+    
+}
+
+.main__col{
+    cursor: pointer;
+    width: 19%;                     /*colocando a largura dos cards de forma dinamica, eu posso meio que alterar a quantidade deles a partir do seu tamanho no media screen, se eu aumento o tamanho percentual eu diminuo a quantidade de cards por fileira*/
+    margin-right: 1%;
+    margin-top: 20px;
+    background-color: #282828;
+    border-radius: 8px ;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.main__col h3{
+    color: white;
+    margin: 8px 0;
+}
+
+.main__col p{
+    color: rgb(100,100,100);
+    margin: 8px 0;
+    font-size: 13px;
+    text-align: left;
+}
+
+.player{
+    width: 100%;
+    padding: 20px;
+    height: 100px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    background-color: rgb(60,60,60);
+}
+
+.player__artist{
+    width: 20%;
+    max-height: 70px;
+
+}
+
+.player__artist img{
+    max-width: 70px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.player__artist h3{
+    display: inline-block;
+}
+
+.player__artist h3 > span {
+    color: rgb(200,200,200);
+    font-size: 13px;
+}
+
+.player__control{
+    width: 70%;
+    text-align: center;
+}
+
+.player__control__buttons a{
+    color: white;
+    margin: 8px 15px;
+    font-size: 18px;
+}
+
+.player__control__progress{
+    width: 100%;
+    max-width: 600px;
+    height: 7px;
+    margin-top: 20px;
+    position: relative;                         /* eu coloco a posicao relativa para que a barra de progresso2 que eh a que vai aumentando possa ficar localizada em cima dessa primeira barra para que o progresso faça sentido*/
+    border-radius: 8px;                         
+    display: inline-block;                      /* buscar entender melhor pq display inline-block(fez ele ficar no centro)*/
+    background-color: rgb(130,130,130);
+}
+
+.player__control__progress2{
+    position: absolute;
+    left: 0;                    /*left 0 e top 0 eh pq ele eh relativo com o elemento pai que eh o progress 1 para eu fazer a barra de progresso dinamicamente*/
+    top: 0;
+    width: 0;
+    height: 7px;
+    border-radius: 8px;
+    background-color: white;
+}
+
+@media screen and (max-width: 1500px) {
+   .main__col{
+       width: 30%;
+       margin-right: 3%;
+   }
+    
+}
+
+@media screen and (max-width: 1024px) {
+    .main__col{
+        width: 48%;
+        margin-right: 2%;
+    }
+     
+ }
+
+ @media screen and (max-width: 800px) {
+    .main__col{
+        width: 100%;
+    }
+     
+ }
