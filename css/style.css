@@ -29,8 +29,12 @@ html,body {
 }
 
 .sidebar__menu{
-    margin: 20px 0 20px 0;
+    margin: 30px 0 10px 0;
     color: rgb(190,190,190);
+}
+
+.sidebar__menu2{
+    margin: 0 0 20px;
 }
 
 .sidebar__menu a:hover{
@@ -131,7 +135,7 @@ html,body {
 }
 
 .msg {
-    margin: 5px 0;
+    margin: 10px 0;
     height: 30px;
     display: flex;
     color: rgb(190,190,190);
@@ -214,6 +218,18 @@ html,body {
     text-align: left;
 }
 
+.main__col:hover{
+    background-color: #393939;
+    transition: 1s;
+}
+
+.main__col:hover p{
+    color: white;
+    font-weight: bold;
+    transition: 1s;
+    
+}
+
 .player{
     width: 100%;
     padding: 20px;
@@ -278,7 +294,7 @@ html,body {
     background-color: white;
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1400px) {
    .main__col{
        width: 30%;
        margin-right: 3%;
